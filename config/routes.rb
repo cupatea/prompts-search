@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "prompts#index"
+
+  post :search, to: "prompts#search"
 end
