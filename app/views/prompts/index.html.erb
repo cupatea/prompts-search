@@ -1,7 +1,17 @@
-<%= form_for :prompts, method: :get do |f| %>
-  <%= text_field_tag :search %>
-  <%= f.submit %>
-<% end %>
+<div data-controller="prompts">
+  <%= form_for :prompt,
+      url: search_path,
+      data: { turbo_frame: "prompts-results", target: "prompts.searchForm" },
+      class: "w3-container" do |f| %>
+    <div class="w3-margin-top" style="display: flex;justify-content: center">
+      <div class="w3-margin-right">
+        <%= f.text_field :q, class: "w3-input w3-border", data: { target: "prompts.input", action: "input->prompts#search" } %>
+      </div>
+      <div class="">
+        <%= f.submit 'Search', class: 'w3-button w3-teal' %>
+      </div>
+    </div>
+  <% end %>
 
-<div class="prompt-result">
+  <div id="prompts-results" class="w3-container"></div>
 </div>
