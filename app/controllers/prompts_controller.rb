@@ -3,6 +3,7 @@ class PromptsController < ApplicationController
 
   def search
     @prompts = Prompt.search_by_body(permitted_params[:q])
+                     .with_pg_search_highlight
                      .limit(5)
 
     render turbo_stream: turbo_stream.update(

@@ -1,5 +1,5 @@
 <ul class="w3-ul">
   <% prompts.each do |prompt| %>
-    <li><%= prompt.body %></li>
+    <li><%= prompt.pg_search_highlight.html_safe %></li>
   <% end %>
 </ul>

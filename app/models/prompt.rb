@@ -7,6 +7,16 @@ class Prompt < ApplicationRecord
                   against: :body,
                   using: {
                     tsearch: {
+                      highlight: {
+                        StartSel: '<b>',
+                        StopSel: '</b>',
+                        MaxWords: 123,
+                        MinWords: 456,
+                        ShortWord: 4,
+                        HighlightAll: true,
+                        MaxFragments: 3,
+                        FragmentDelimiter: '&hellip;'
+                      }
                     }
                   }
 end
