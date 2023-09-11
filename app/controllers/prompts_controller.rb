@@ -2,7 +2,8 @@ class PromptsController < ApplicationController
   def index; end
 
   def search
-    @prompts = Prompt.search(permitted_params[:q], match: :text_middle).limit(5)
+    @prompts = Prompt.search_by_body(permitted_params[:q])
+                     .limit(5)
 
     render turbo_stream: turbo_stream.update(
       'prompts-results',
