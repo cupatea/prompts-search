@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_183702) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_191303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_183702) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.tsvector "tsv"
+    t.index ["tsv"], name: "index_prompts_on_tsv", using: :gin
   end
 
 end

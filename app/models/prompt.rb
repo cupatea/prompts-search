@@ -7,6 +7,7 @@ class Prompt < ApplicationRecord
                   against: :body,
                   using: {
                     tsearch: {
+                      tsvector_column: :tsv,
                       highlight: {
                         StartSel: '<b>',
                         StopSel: '</b>',
